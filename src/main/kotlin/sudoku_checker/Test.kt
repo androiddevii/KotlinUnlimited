@@ -199,12 +199,13 @@ fun main() {
     test(
         name = "Sudoku with board size 4×4 grid (2×2 subgrids), then return true",
         result = isValidSudoku(
-            board = listOf(
-                listOf('1', '-', '-', '4'),
-                listOf('-', '4', '1', '-'),
-                listOf('-', '1', '-', '3'),
-                listOf('2', '-', '4', '-')
-            ), 2
+          board = listOf(
+            listOf('1', '-', '-', '4'),
+            listOf('-', '4', '1', '-'),
+            listOf('-', '1', '-', '3'),
+            listOf('2', '-', '4', '-')
+          ),
+          subgridSize = 2
         ),
         correctResult = true
     )
@@ -216,9 +217,36 @@ fun main() {
                 listOf('1', '-', '-', '4'),
                 listOf('-', '4', '1', '-'),
                 listOf('-', '1', '-', '3'),
-            ), 2
+            ),
+            subgridSize =2
         ),
         correctResult = false
+    )
+
+    test(
+         name = "Sudoku with board size 16×16 grid (4×4 subgrids) completed, then return true",
+         result = isValidSudoku(
+            board = listOf(
+                 listOf('1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'),
+                 listOf('5','6','7','8','9','A','B','C','D','E','F','G','1','2','3','4'),
+                 listOf('9','A','B','C','D','E','F','G','1','2','3','4','5','6','7','8'),
+                 listOf('D','E','F','G','1','2','3','4','5','6','7','8','9','A','B','C'),
+                 listOf('2','1','4','3','6','5','8','7','A','9','C','B','E','D','G','F'),
+                 listOf('6','5','8','7','A','9','C','B','E','D','G','F','2','1','4','3'),
+                 listOf('A','9','C','B','E','D','G','F','2','1','4','3','6','5','8','7'),
+                 listOf('E','D','G','F','2','1','4','3','6','5','8','7','A','9','C','B'),
+                 listOf('3','4','5','6','7','8','9','A','B','C','D','E','F','G','1','2'),
+                 listOf('7','8','9','A','B','C','D','E','F','G','1','2','3','4','5','6'),
+                 listOf('B','C','D','E','F','G','1','2','3','4','5','6','7','8','9','A'),
+                 listOf('F','G','1','2','3','4','5','6','7','8','9','A','B','C','D','E'),
+                 listOf('4','3','2','1','8','7','6','5','C','B','A','9','G','F','E','D'),
+                 listOf('8','7','6','5','C','B','A','9','G','F','E','D','4','3','2','1'),
+                 listOf('C','B','A','9','G','F','E','D','4','3','2','1','8','7','6','5'),
+                 listOf('G','F','E','D','4','3','2','1','8','7','6','5','C','B','A','9')
+            ),
+            subgridSize = 4
+        ),
+        correctResult = true
     )
 }
 
