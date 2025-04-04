@@ -2,25 +2,20 @@ package ipv4_checker
 
 fun main() {
 
-    println(isValidIPv4Address("192.1#8.1.1"))      // false
-    println(isValidIPv4Address("192.168.1"))        // false
-    println(isValidIPv4Address("192.168.1.1"))      // true
-    println(isValidIPv4Address("256.256.256.256"))  // false
-    println(isValidIPv4Address("192.168.1.1.1"))    // false
-    println(isValidIPv4Address("0.0.0.0"))          // true
-    println(isValidIPv4Address("192.168.01.1"))     // false
-    println(isValidIPv4Address("192.168.1.a"))      // false
-    println(isValidIPv4Address("255.255.255.255"))  // true
-    println(isValidIPv4Address("192.168*1.a"))      // false
-
 }
-
-
 
 fun isValidIPv4Address(input: String): Boolean {
-    return false
-}
+    val segments = input.split(".")
+    if (segments.size != 4) return false
 
+    for (segment in segments) {
+        if (segment.isEmpty() ||
+           (segment.length > 1 && segment.startsWith("0")) ||
+           ((segment.toIntOrNull() ?: return false) !in 0..255)
+        ) return false
+    }
+    return true
+}
 
 
 
